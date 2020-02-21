@@ -13,6 +13,6 @@ The respository is organized in the following subfolders:
 Contains all scripts that are used to computationally genotype and thus distinguish single replicates (embryos).
 
 
-2. Figure scripts
+2. Plot scripts
 
 Contains all scripts necessary to create the single figure panels from the Source Data files containing the raw data behind all graphs.
