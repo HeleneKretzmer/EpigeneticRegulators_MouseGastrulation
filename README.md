@@ -5,9 +5,14 @@ During ontogeny, proliferating cells become restricted in their fate through the
 
 ## Structure
 This repository contains the collection of R snippets and scripts used to perform the transcriptomics analysis (scRNA-seq) presented in Grosswendt, Kretzmer, Smith et al.
-
 The respository is organized in the following subfolders:
-1. Genotyping of cells to computationally distinguish single replicates (embryos)
+
+
+1. Genotyping scripts
+
+Contains all scripts that are used to computationally genotype and thus distinguish single replicates (embryos).
+
 
 2. Figure scripts
+
 Contains all scripts necessary to create the single figure panels from the Source Data files containing the raw data behind all graphs.
