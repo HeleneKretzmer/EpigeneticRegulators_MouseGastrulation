@@ -15,4 +15,4 @@ Contains all scripts that are used to computationally genotype and thus distingu
 
 2. Plot scripts
 
-Contains all scripts necessary to create the single figure panels from the Source Data files containing the raw data behind all graphs.
+Contains all scripts necessary to create the single figure panels from the Source Data files containing the raw data behind all graphs. Source Data are deposited at https://oc-molgen.gnz.mpg.de/owncloud/s/F8g3y5F79JZRyof.
