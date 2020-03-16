@@ -8,11 +8,15 @@ This repository contains the collection of R snippets and scripts used to perfor
 The respository is organized in the following subfolders:
 
 
-1. Genotyping scripts
+1. Genotyping repository subfolder
 
 This folder contains all scripts that are used to computationally genotype and thus distinguish single replicates (embryos).
 
 
-2. Scripts
+2. Scripts repository subfolder
 
-This folder contains all scripts necessary to create the single figure panels from the Source Data files containing the raw data behind all graphs. Source Data are deposited at https://oc-molgen.gnz.mpg.de/owncloud/s/F8g3y5F79JZRyof.
+This folder contains all scripts necessary to create the single figure panels from the Source Data files containing the  data behind all graphs. Source Data are deposited at https://oc-molgen.gnz.mpg.de/owncloud/s/F8g3y5F79JZRyof.
+
+
+## Data availability
+All scRNA-seq and WGBS datasets can be found in the Gene Expression Omnibus (GEO) under accession code GSE137337.
