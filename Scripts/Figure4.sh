@@ -50,7 +50,7 @@ mESC Nanostring expression data are in Supplementary Table 11.
 require(ggplot2)
 require(scales)
 
-data <- read.table('Fig4f.ED11d_Nanostring.tsv', header=T)
+data <- read.table('Fig4f.ED11c_Nanostring.tsv', header=T)
 
 data <- subset(data, gene %in% c('Dppa3', 'Esrrb', 'Pax6', 'Sox1', 'T', 'Tbx20', 'Bmp4', 'Gata4', 'Gata6'))
 data$gene <- factor(data$gene, levels = rev(c('Dppa3', 'Esrrb', 'Pax6', 'Sox1', 'T', 'Tbx20', 'Bmp4', 'Gata4', 'Gata6')))
