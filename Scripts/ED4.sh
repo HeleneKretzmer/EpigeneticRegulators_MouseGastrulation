@@ -2,7 +2,7 @@
 ```{r}
 require(pheatmap)
 
-data <- read.table('WGBS_genomewide.tsv', header=T)
+data <- read.table('ED4a.ED4b_WGBS_genomewide.tsv', header=T)
 
 M <- cor(data[,-c(1:3)], use='pairwise.complete.obs')
 
@@ -16,7 +16,7 @@ pheatmap(M[grep('Ex', rownames(M)),grep('Ex', colnames(M))])
 ```{r}
 require(vioplot)
 
-data <- read.table('WGBS_genomewide.tsv', header=T)
+data <- read.table('ED4a.ED4b_WGBS_genomewide.tsv', header=T)
 
 vioplot(data[,-c(1:3)], names=c(colnames(data[,-c(1:3)])), cex=0.3)
 ```
@@ -26,7 +26,7 @@ vioplot(data[,-c(1:3)], names=c(colnames(data[,-c(1:3)])), cex=0.3)
 ```{r}
 require(ggplot)
 
-data <- read.table('CGI_avg_methyl.tsv', header=T)
+data <- read.table('ED4c_CGI_avg_methyl.tsv', header=T)
 
 ggplot(data, aes(x=WT_Epi, y=Eed_Epi)) + geom_abline(intercept=0, slope=1, color='grey') + geom_point(aes(color=cut(Eed_Epi-WT_Epi, breaks=c(-1,-0.25,-0.1,0.1,0.25,1)))) + theme_classic() + xlim(c(0,1)) + ylim(c(0,1)) + theme(legend.position='none')
 ggplot(data, aes(x=WT_Exe, y=Eed_Exe)) + geom_abline(intercept=0, slope=1, color='grey') + geom_point(aes(color=cut(Eed_Exe-WT_Exe, breaks=c(-1,-0.25,-0.1,0.1,0.25,1)))) + theme_classic() + xlim(c(0,1)) + ylim(c(0,1)) + theme(legend.position='none')
@@ -64,7 +64,7 @@ ggplot(data, aes(x=WT_Exe, y=Kmt2b_Exe_rep1)) + geom_abline(intercept=0, slope=1
 ```{r}
 require(eulerr)
 
-data <- read.table('Promoter_CGI_Kdm2b_Kmt2b.tsv', header=T)
+data <- read.table('ED4e_Promoter_CGI_Kdm2b_Kmt2b.tsv', header=T)
 data <- na.omit(data)
 data <- data[rowSums(data[,-1]>0.1)>0,]
 data$Kdm2b_Epi_up <- ifelse(data$Kdm2b_Epi_delta > 0.1, 'Kdm2b_Epi_up', 'Kdm2b_Epi_not')
@@ -96,7 +96,7 @@ plot(euler(c(
 ```{r}
 require(ggplot2)
 
-data <- read.table('Promoter_CGI_Kdm2b_Kmt2b_expr.tsv', header=T)
+data <- read.table('ED4e_Promoter_CGI_Kdm2b_Kmt2b_expr.tsv', header=T)
 
 ggplot(data, aes(x=stage, y=perc.pos.cells)) + geom_boxplot(outlier.shape=NA) + geom_point(aes(color=label)) + theme_classic() + ylab('Fraction of positive cells') + ylim(c(0,100)) + facet_grid(~delta)
 ```
@@ -106,7 +106,7 @@ ggplot(data, aes(x=stage, y=perc.pos.cells)) + geom_boxplot(outlier.shape=NA) + 
 ```{r}
 require(ggplot2)
 
-data <- read.table('Distance_diff.methyl.CpG_to_CGI.tsv', header=T)
+data <- read.table('ED4f_Distance_diff.methyl.CpG_to_CGI.tsv', header=T)
 
 ggplot(data, aes(x=dist, y=frac, color=KO, group=KO)) + geom_line(size=1) + theme_classic() + xlim(c(0,10000)) + ylim(c(0,0.025)) + scale_color_manual(values=c('black','grey90','grey60','red','grey30')) + ylab('Distribution of hypermethylated CpGs') + xlab('Distance to CGI center [nt]')
 ```
