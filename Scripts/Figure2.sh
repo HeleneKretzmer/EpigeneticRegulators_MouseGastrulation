@@ -11,7 +11,7 @@ data$cluster <- factor(data$cluster, levels=cols$cluster)
 ggplot() + geom_point(data=subset(data, stage %in% c('WT65', 'WT70','WT75','WT80','WT85')), aes(x=UMAP1, y=UMAP2), color='gray85', size=0.1, alpha=0.5) + geom_point(data=subset(data, stage == 'WT85'), aes(x=UMAP1, y=UMAP2, color=as.factor(cluster)), size=0.1, alpha=0.5) + theme_void() + theme(legend.position='none') + scale_color_manual(values=as.character(subset(cols, cluster %in% unique(subset(data, stage == 'WT85'))$cluster)$color))
 
 
-data <- read.table('KO_UMAP.tsv', header=T)
+data <- read.table('Fig2a.ED3a.ED6d_KO_UMAP.tsv', header=T)
 data$cluster <- factor(data$cluster, levels=cols$cluster)
 
 ggplot() + geom_point(data=subset(data, type =='WT'), aes(x=UMAP1, y=UMAP2), color='gray85', size=0.1, alpha=0.5) + geom_point(data=subset(data, type == 'Eed'), aes(x=UMAP1, y=UMAP2, color=cluster), size=0.5) + theme_void() + scale_color_manual(values=as.character(subset(cols, cluster %in% subset(data, type == 'Eed')$cluster)$color))
@@ -35,7 +35,7 @@ require(cluster)
 require(circlize)
 require(ComplexHeatmap)
 
-data <- read.table('Fig2c_CellState_FC.tsv', header=T, row.names=1)
+data <- read.table('Fig2c.ED3a_CellState_FC.tsv', header=T, row.names=1)
 
 col_fun <- colorRamp2(c(-1.5, 0, 1.5), c('blue', 'white', 'red'))
 ha <- HeatmapAnnotation(foo = colMeans(data, na.rm=T), col = list(foo = col_fun))
