@@ -6,17 +6,17 @@ require(circlize)
 
 a <- 10
 
-overview <- read.table('Cutsites_E65_Eed_WT.tsv', header=T)
-Eed <- read.table('Cutsites_E65_Eed.tsv', header=T)
-WT <- read.table('Cutsites_E65_WT.tsv', header=T)
+overview <- read.table('ED9b_Cutsites_E65_Eed_WT.tsv', header=T)
+Eed <- read.table('ED9b_Cutsites_E65_Eed.tsv', header=T)
+WT <- read.table('ED9b_Cutsites_E65_WT.tsv', header=T)
 
-overview <- read.table('Cutsites_E75_Eed_WT.tsv', header=T)
-Eed <- read.table('Cutsites_E75_Eed.tsv', header=T)
-WT <- read.table('Cutsites_E75_WT.tsv', header=T)
+overview <- read.table('ED9b_Cutsites_E75_Eed_WT.tsv', header=T)
+Eed <- read.table('ED9b_Cutsites_E75_Eed.tsv', header=T)
+WT <- read.table('ED9b_Cutsites_E75_WT.tsv', header=T)
 
-overview <- read.table('Cutsites_E85_Eed_WT.tsv', header=T)
-Eed <- read.table('Cutsites_E85_Eed.tsv', header=T)
-WT <- read.table('Cutsites_E85_WT.tsv', header=T)
+overview <- read.table('ED9b_Cutsites_E85_Eed_WT.tsv', header=T)
+Eed <- read.table('ED9b_Cutsites_E85_Eed.tsv', header=T)
+WT <- read.table('ED9b_Cutsites_E85_WT.tsv', header=T)
 
 overview$Var1 <- factor(overview$Var1, levels=c('insertions','mismatch','match','spliced'))
 ggplot(overview, aes(x=Var2, y=value, fill=Var1)) + geom_bar(stat='identity') + theme_classic() + facet_wrap(~type, ncol=1) + scale_fill_manual(values=c('darkblue','darkblue','gray90','darkgrey')) + xlab('Eed position [nt]') + ylab('Fraction of reads') + scale_x_continuous(breaks=c(cumsum(c(0,458,114,153,93,66,126,82,93,134,106,159,74,127,285)), 579,587,598, 939,950,961, 1052,1063,1074), labels=c(cumsum(c(0,458,114,153,93,66,126,82,93,134,106,159,74,127,285)), '','g3','', '','g2','', '','g1',''))
