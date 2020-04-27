@@ -10,14 +10,14 @@ ggplot(data, aes(x=collected, y=0)) + geom_curve(aes(x=collected, y=0, xend=assi
 
 
 # Figure 4c
-Log2FC and expression correlation are in EED_FC_cor.tsv.
+Log2FC and expression correlation are in Fig4c_EED_FC_cor.tsv.
 
 
 # Figure 4d
 ```{r}
 require(eulerr)
 
-data <- read.table('Venn.tsv', header=T, sep='\t')
+data <- read.table('Fig4d.ED10g_Venn.tsv', header=T, sep='\t')
 
 plot(euler(c(
     'WT_total'=2322,
@@ -50,7 +50,7 @@ mESC Nanostring expression data are in Supplementary Table 11.
 require(ggplot2)
 require(scales)
 
-data <- read.table('Nanostring.tsv', header=T)
+data <- read.table('Fig4f.ED11d_Nanostring.tsv', header=T)
 
 data <- subset(data, gene %in% c('Dppa3', 'Esrrb', 'Pax6', 'Sox1', 'T', 'Tbx20', 'Bmp4', 'Gata4', 'Gata6'))
 data$gene <- factor(data$gene, levels = rev(c('Dppa3', 'Esrrb', 'Pax6', 'Sox1', 'T', 'Tbx20', 'Bmp4', 'Gata4', 'Gata6')))
