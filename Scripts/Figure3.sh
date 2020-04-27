@@ -76,10 +76,10 @@ deeptools/bin/plotProfile -m DMV_CGIsExEhyper_cluster1.tab.gz -out DMV_CGIsExEhy
 ```{r}
 require(ggplot2)
 
-WT_plot <- read.table('Fig3_Dppa3_Umap_WT.tsv', header=T)
-Eed_plot <- read.table('Fig3_Dppa3_Umap_Eed.tsv', header=T)
-Rnf2_plot <- read.table('Fig3_Dppa3_Umap_Rnf2.tsv', header=T)
-Kdm2b_plot <- read.table('Fig3_Dppa3_Umap_Kdm2b.tsv', header=T)
+WT_plot <- read.table('Fig3i_Dppa3_Umap_WT.tsv', header=T)
+Eed_plot <- read.table('Fig3i_Dppa3_Umap_Eed.tsv', header=T)
+Rnf2_plot <- read.table('Fig3i_Dppa3_Umap_Rnf2.tsv', header=T)
+Kdm2b_plot <- read.table('Fig3i_Dppa3_Umap_Kdm2b.tsv', header=T)
 
 ggplot() + geom_point(data=subset(WT_plot, X=='all'), aes(x=UMAP_1, y=UMAP_2), size=0.5, color='lightgrey') + geom_point(data=subset(WT_plot, X!='all'), aes(x=UMAP_1, y=UMAP_2, color=X), size=1) + theme_classic() + scale_color_manual(values=c('black','#E6007E')) + theme_void() + theme(legend.position="none") + ggtitle('')
 ggplot() + geom_point(data=subset(Kdm2b_plot, X=='all'), aes(x=UMAP_1, y=UMAP_2), size=0.5, color='lightgrey') + geom_point(data=subset(Kdm2b_plot, X!='all'), aes(x=UMAP_1, y=UMAP_2, color=X), size=1) + theme_classic() + scale_color_manual(values=c('black','#E6007E')) + theme_void() + theme(legend.position="none") + ggtitle('')
