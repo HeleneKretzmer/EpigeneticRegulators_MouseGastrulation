@@ -4,8 +4,8 @@ require(cluster)
 require(circlize)
 require(ComplexHeatmap)
 
-data_me <- read.table('DMV_methylation.txv',  header=T, row.names=1)
-data_enr <- read.table('DMV_enrichment.txv',  header=T, row.names=1)
+data_me <- read.table('ED7a.ED7b_DMV_methylation.tsv',  header=T, row.names=1)
+data_enr <- read.table('ED7a_DMV_enrichment.tsv',  header=T, row.names=1)
 
 
 Heatmap(as.matrix(data_me), col = colorRamp2(c(0, 0.15, 0.5, 1), c('white', 'white', 'red','red')), rect_gp=gpar(col='grey', lwd=1))
@@ -17,9 +17,9 @@ Heatmap(as.matrix(data_enr), col = colorRamp2(c(0, 1, 9), c('lightgrey', 'lightg
 ```{r}
 require(vioplot)
 
-DMV <- read.table('DMV_methyl.tsv', header=T)
-CGI <- read.table('CGI_methyl.tsv', header=T)
-CGIhyper <- read.table('CGIhyper_methyl.tsv', header=T)
+DMV <- read.table('ED7a_DMV_methyl.tsv', header=T)
+CGI <- read.table('ED7a_CGI_methyl.tsv', header=T)
+CGIhyper <- read.table('ED7a_CGIhyper_methyl.tsv', header=T)
 
 par(mfrow=c(2,3))
 vioplot(DMV[,1:4], names=colnames(DMV[,1:4]), ylim=c(0,1))
@@ -42,15 +42,15 @@ annotation <- data.frame(
 cluster=c(17, 27, 4, 14, 29, 40, 25, 0, 28, 5, 15, 41, 37, 2, 13, 32, 36, 9, 22, 30, 26, 31, 20, 21, 6, 34, 18, 12, 3, 38, 23, 7, 8, 19, 16, 10, 11, 39, 1, 24, 33, 35),
 label=c('Epi', 'PGCs', 'Xendo', 'Xendo', 'Xendo', 'Xendo', 'Xecto', 'Xecto', 'Xecto', 'Xmeso', 'Xmeso', 'Xmeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Emeso', 'Eendo', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto', 'Eecto'))
 
-methyl <- read.table('DMV_methylation.tsv', header=T)
+methyl <- read.table('ED7a.ED7b_DMV_methylation.tsv', header=T)
 ht_methyl <- Heatmap(as.matrix(methyl[,c(4,6,5,7)]), cluster_rows = diana(as.matrix(methyl[,c(4,6,5,7)])), cluster_columns=F, col=colorRamp2(c(0,0.15,0.5,1), c('grey80', 'white', 'red', 'red')), show_row_dend=F, show_row_names=F)
 genes <- methyl$gene[row_order(ht_methyl)]
 g <- na.omit(unique(genes))
 
-delta_expr <- read.table('DMV_PRC_recur_expr.tsv', header=T)
+delta_expr <- read.table('ED7b_DMV_PRC_recur_expr.tsv', header=T)
 ht_diff <- Heatmap(delta_expr[,-1], cluster_rows=F, cluster_columns=F, show_row_names=F, col=colorRamp2(c(0,27), c('grey95', 'black')))
 
-WT.g <- read.table('DMV_WT_expr.tsv', header=T, row.names=1)
+WT.g <- read.table('ED7b_DMV_WT_expr.tsv', header=T, row.names=1)
 WT.g <- WT.g[match(rownames(WT.g), genes),]
 colnames(WT.g) <- gsub('X','',colnames(WT.g))
 
@@ -89,7 +89,7 @@ ht_methyl + ht_expr + ht_diff
 ```{r}
 require(ggplot2)
 
-data <- read.table('DMV_pos_percent.tsv', header=T)
+data <- read.table('ED7c_DMV_pos_percent.tsv', header=T)
 data$time <- factor(data$time, levels=c('early','mid','late'))
 
 ggplot(data, aes(x=time, fill=time, y=count)) + geom_col() + theme_classic() + scale_fill_manual(values=c('steelblue1', 'steelblue3', 'steelblue4'))
