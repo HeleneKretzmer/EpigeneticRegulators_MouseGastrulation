@@ -1,6 +1,6 @@
 # ED 10b
 ```{r}
-data <- read.table('Embyro_sizes.tsv', header=T)
+data <- read.table('ED10b_Embyro_sizes.tsv', header=T)
 
 round(apply(data, 2, mean, na.rm=T),0)
 round(apply(data, 2, sd, na.rm=T),0)
@@ -16,8 +16,8 @@ cluster_colors <- c('black','#ffd100','#cbbba0','#92c464','#df76ac','#a2c5ea','#
 cluster_order <- c('17','4','25','8','37','3','2','38','36','11','26','19','13','20','29','27','14','0','5','7','9','28','1','30','12','23','15','34','35','33','24','39','22','31','41','18','32','16','21','10','40','6')
 s <- c(17, 27, 8,19,1,11,16,10,24,39,33,35,26,31, 3,7,38,23, 37,2,13,20,12,30,36,32,34,21,6,18,9,22, 5,15,41, 0,25,28, 4,29,40,14)
 
-data.WT <- read.table('WT_alluvial.tsv', header=T)
-data.Eed <- read.table('Eed_alluvial.tsv', header=T)
+data.WT <- read.table('ED10c_WT_alluvial.tsv', header=T)
+data.Eed <- read.table('ED10c_Eed_alluvial.tsv', header=T)
 
 data.WT$cluster <- factor(data.WT$cluster, levels=cluster_order[match(s, cluster_order)])
 data.Eed$cluster <- factor(data.Eed$cluster, levels=cluster_order[match(s, cluster_order)])
@@ -42,7 +42,7 @@ ggplot(data.Eed, aes(x = stage, stratum = cluster, alluvium = cluster, y = fract
 ```{r}
 require(ggplot2)
 
-data <- read.table('Estimated_number_of_PGC.tsv', header=T)
+data <- read.table('ED10d_Estimated_number_of_PGC.tsv', header=T)
 
 ggplot(data, aes(x=adjStage, y=PGCs.estimate)) + geom_point() + geom_boxplot(fill=NA) + theme_classic() + facet_grid(~type)
 ```
@@ -52,7 +52,7 @@ ggplot(data, aes(x=adjStage, y=PGCs.estimate)) + geom_point() + geom_boxplot(fil
 ```{r}
 require(ggplot2)
 
-data <- read.table('Cdkn2a_pos_cells_Eed.tsv', header=T)
+data <- read.table('ED10e_Cdkn2a_pos_cells_Eed.tsv', header=T)
 
 ggplot(data, aes(x=type, y=frac, fill=label)) + geom_boxplot(outlier.shape=NA) + theme_classic() + ylab('Fraction of Cdkn2a positive cells') + ylim(c(0,100)) + geom_point(position=position_jitterdodge(jitter.width=0.001), size=1)
 ```
@@ -62,7 +62,7 @@ ggplot(data, aes(x=type, y=frac, fill=label)) + geom_boxplot(outlier.shape=NA) +
 ```{r}
 require(ggplot2)
 
-data <- read.table('X_expr.tsv', header=T)
+data <- read.table('Fig3e.ED6b.ED10f_X_expr.tsv', header=T)
 
 ggplot(subset(data, stage %in% c('WT_65','WT_70','WT_75','WT_80','WT_85','Eed_65','Eed_75','Eed_85')), aes(x=stage, y=log2(frac), fill=sex)) + geom_boxplot(width=0.5, outlier.shape=NA) + theme_classic() + scale_fill_manual(values=c('firebrick','dodgerblue')) + ggtitle('EED') + facet_grid(~XE)
 ```
@@ -72,7 +72,7 @@ ggplot(subset(data, stage %in% c('WT_65','WT_70','WT_75','WT_80','WT_85','Eed_65
 ```{r}
 require(eulerr)
 
-data <- read.table('Venn.tsv', header=T, sep='\t')
+data <- read.table('Fig4d.ED10g_Venn.tsv", header=T, sep='\t')
 
 plot(euler(c(
     'WT_total'=4808,
