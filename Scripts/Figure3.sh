@@ -2,7 +2,7 @@
 ```{r}
 require(ggplot2)
 
-data <- read.table('PCG_count.tsv', header=T)
+data <- read.table('Fig3a_PCG_count.tsv', header=T)
 
 ggplot(data, aes(x=stage, y=frac)) + geom_boxplot() + theme_classic()
 ```
@@ -12,7 +12,7 @@ ggplot(data, aes(x=stage, y=frac)) + geom_boxplot() + theme_classic()
 ```{r}
 require(ggplot2)
 
-data <- read.table('Allantois_count.tsv', header=T)
+data <- read.table('Fig3b_Allantois_count.tsv', header=T)
 
 ggplot(data, aes(x=stage, y=frac)) + geom_boxplot() + theme_classic()
 ```
@@ -22,7 +22,7 @@ ggplot(data, aes(x=stage, y=frac)) + geom_boxplot() + theme_classic()
 ```{r}
 require(ggplot2)
 
-data <- read.table('XEcto_fraction.tsv', header=T)
+data <- read.table('Fig3d_XEcto_fraction.tsv', header=T)
 
 ggplot(data, aes(x=sex, y=frac)) + geom_point() + geom_boxplot() + theme_classic() + facet_grid(~type)
 ```
@@ -32,7 +32,7 @@ ggplot(data, aes(x=sex, y=frac)) + geom_point() + geom_boxplot() + theme_classic
 ```{r}
 require(ggplot2)
 
-data <- read.table('X_expr.tsv', header=T)
+data <- read.table('Fig3e.ED6b.ED10f_X_expr.tsv', header=T)
 
 ggplot(subset(data, stage %in% c('WT_65','WT_70','WT_75','WT_80','WT_85','Eed_85','Rnf2_85','Kdm2b_85')), aes(x=gsub('_.*','',stage), y=log2(frac), fill=sex)) + geom_boxplot(width=0.5, outlier.shape=NA) + theme_classic() + scale_fill_manual(values=c('firebrick','dodgerblue')) + facet_grid(~XE)
 ```
@@ -42,7 +42,7 @@ ggplot(subset(data, stage %in% c('WT_65','WT_70','WT_75','WT_80','WT_85','Eed_85
 ```{r}
 require(ggplot2)
 
-data <- read.table('Cdkn2a_pos_cells.tsv', header=T)
+data <- read.table('Fig3f_Cdkn2a_pos_cells.tsv', header=T)
 
 ggplot(data, aes(x=type, y=frac, fill=label)) + geom_boxplot(outlier.shape=NA) + theme_classic() + ylab('Fraction of Cdkn2a positive cells') + ylim(c(0,100)) + geom_point(position=position_jitterdodge(jitter.width=0.001), size=1)
 ```
@@ -76,10 +76,10 @@ deeptools/bin/plotProfile -m DMV_CGIsExEhyper_cluster1.tab.gz -out DMV_CGIsExEhy
 ```{r}
 require(ggplot2)
 
-WT_plot <- read.table('Dppa3_Umap_WT.tsv', header=T)
-Eed_plot <- read.table('Dppa3_Umap_Eed.tsv', header=T)
-Rnf2_plot <- read.table('Dppa3_Umap_Rnf2.tsv', header=T)
-Kdm2b_plot <- read.table('Dppa3_Umap_Kdm2b.tsv', header=T)
+WT_plot <- read.table('Fig3_Dppa3_Umap_WT.tsv', header=T)
+Eed_plot <- read.table('Fig3_Dppa3_Umap_Eed.tsv', header=T)
+Rnf2_plot <- read.table('Fig3_Dppa3_Umap_Rnf2.tsv', header=T)
+Kdm2b_plot <- read.table('Fig3_Dppa3_Umap_Kdm2b.tsv', header=T)
 
 ggplot() + geom_point(data=subset(WT_plot, X=='all'), aes(x=UMAP_1, y=UMAP_2), size=0.5, color='lightgrey') + geom_point(data=subset(WT_plot, X!='all'), aes(x=UMAP_1, y=UMAP_2, color=X), size=1) + theme_classic() + scale_color_manual(values=c('black','#E6007E')) + theme_void() + theme(legend.position="none") + ggtitle('')
 ggplot() + geom_point(data=subset(Kdm2b_plot, X=='all'), aes(x=UMAP_1, y=UMAP_2), size=0.5, color='lightgrey') + geom_point(data=subset(Kdm2b_plot, X!='all'), aes(x=UMAP_1, y=UMAP_2, color=X), size=1) + theme_classic() + scale_color_manual(values=c('black','#E6007E')) + theme_void() + theme(legend.position="none") + ggtitle('')
